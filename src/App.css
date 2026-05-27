@@ -843,13 +843,14 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(4px);
-  z-index: 200;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1200;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 0;
   animation: fadeIn 0.2s ease;
 }
 
@@ -859,7 +860,8 @@
   box-shadow: var(--shadow-xl);
   width: 100%;
   max-width: 640px;
-  max-height: 80vh;
+  max-height: calc(100vh - 48px);
+  margin: 24px;
   overflow-y: auto;
   animation: scaleIn 0.25s ease;
 }
@@ -1421,4 +1423,82 @@
   background: transparent;
   cursor: pointer;
   z-index: 3;
+}
+
+/* ─── COMPRAS: MODAL DETALLE ─── */
+.purchase-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.meta-item {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-item strong {
+  font-size: 12px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.meta-item span {
+  color: var(--gray-800);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.table-compact thead th,
+.table-compact tbody td {
+  padding: 9px 12px;
+}
+
+.no-data {
+  text-align: center;
+  color: var(--gray-400);
+  padding: 20px 12px;
+}
+
+.purchase-total-card {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary-100);
+  background: var(--primary-50);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.purchase-total-card span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-700);
+}
+
+.purchase-total-card h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-800);
+}
+
+.modal-footer {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--gray-100);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .purchase-meta {
+    grid-template-columns: 1fr;
+  }
 }

@@ -140,7 +140,7 @@ const Compras = () => {
   ];
 
   return (
-    <div className="compras-page animate-fade-in">
+    <div className="compras-page">
       <div className="page-header">
         <div>
           <h1 className="page-title">Historial de Compras</h1>
@@ -271,10 +271,10 @@ const Compras = () => {
       {/* Details Modal */}
       {selectedCompra && (
         <div className="modal-overlay" onClick={() => setSelectedCompra(null)}>
-          <div className="modal-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content animate-scale-in" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>Detalle de Compra #{selectedCompra.id}</h3>
-              <button className="modal-close-btn" onClick={() => setSelectedCompra(null)}>✕</button>
+              <h3 className="modal-title">Detalle de Compra #{selectedCompra.id}</h3>
+              <button className="modal-close" onClick={() => setSelectedCompra(null)}>✕</button>
             </div>
             <div className="modal-body">
               <div className="purchase-meta">
@@ -316,7 +316,7 @@ const Compras = () => {
                     {selectedCompra.detalles && selectedCompra.detalles.length > 0 ? (
                       selectedCompra.detalles.map((det) => (
                         <tr key={det.id}>
-                          <td><strong>{det.producto?.nombre}</strong></td>
+                          <td><strong>{det.producto?.nombre ?? det.productoNombre ?? 'Producto'}</strong></td>
                           <td>{det.cantidad}</td>
                           <td>{formatCurrency(det.precioUnitario)}</td>
                           <td><strong>{formatCurrency(det.subtotal)}</strong></td>
